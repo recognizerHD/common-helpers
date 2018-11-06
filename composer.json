@@ -6,6 +6,7 @@
     "laravel",
     "helpers"
   ],
+  "license": "MIT",
   "authors": [
     {
       "name": "Paul Warren",
