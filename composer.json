@@ -1,0 +1,31 @@
+{
+  "name": "minionfactory/common-helpers",
+  "description": "Contains a few common helpers used in many projects.",
+  "type": "package",
+  "keywords": [
+    "laravel",
+    "helpers"
+  ],
+  "authors": [
+    {
+      "name": "Paul Warren",
+      "email": "paul@paulwarren.ca",
+      "role": "Developer",
+      "homepage": "https://paulwarren.ca"
+    }
+  ],
+  "require" : {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "laravel/framework": "~5.6"
+  },
+
+  "autoload": {
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
