@@ -19,7 +19,13 @@ if ( ! function_exists('showMoney')) {
 
         // return \money_format( $format, $this->value)
         if ( ! function_exists('money_format')) {
-            return ($showSymbols ? config('settings.global.pre_currency_symbol') : '') .
+			$negative = false;
+			if ($value < 0) {
+				$negative = true;
+				$value    = abs($value);
+			}
+            return ($negative ? '-' : '') .
+				   ($showSymbols ? config('settings.global.pre_currency_symbol') : '') .
                    number_format($value, 2, '.', $showSymbols ? ',' : '') .
                    ($showSymbols ? config('settings.global.post_currency_symbol') : '');
         } else {
