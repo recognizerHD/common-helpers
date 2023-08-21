@@ -3,30 +3,31 @@
 if ( ! function_exists('asMoney')) {
     function asMoney($value)
     {
-        $value = (double)$value;
+        $value = (double) $value;
 
-        return (double)number_format($value, 2, '.', '');
+        return (double) bcdiv($value, 1, 2);
     }
 }
 
 if ( ! function_exists('showMoney')) {
     function showMoney($value, $format = null, $showSymbols = true)
     {
-        $value = (double)$value;
+        $value = (double) $value;
         if ($format === null) {
             $format = config('settings.global.money_format', '%i');
         }
 
         // return \money_format( $format, $this->value)
         if ( ! function_exists('money_format')) {
-			$negative = false;
-			if ($value < 0) {
-				$negative = true;
-				$value    = abs($value);
-			}
-            return ($negative ? '-' : '') .
-				   ($showSymbols ? config('settings.global.pre_currency_symbol') : '') .
-                   number_format($value, 2, '.', $showSymbols ? ',' : '') .
+            $negative = false;
+            if ($value < 0) {
+                $negative = true;
+                $value = abs($value);
+            }
+
+            return ($negative ? '-' : '').
+                   ($showSymbols ? config('settings.global.pre_currency_symbol') : '').
+                   number_format(asMoney($value), 2, '.', $showSymbols ? ',' : '').
                    ($showSymbols ? config('settings.global.post_currency_symbol') : '');
         } else {
             // As of this moment, this is not available on windows. The languages are also not available when I used a custom function from http://www.php.net/manual/en/function.money-format.php
