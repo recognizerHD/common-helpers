@@ -5,7 +5,7 @@ if ( ! function_exists('asMoney')) {
     {
         $value = (double) $value;
 
-        return (double) bcdiv($value, 1, 2);
+        return (double) bcdiv(number_format($value, 5), 1, 2);
     }
 }
 

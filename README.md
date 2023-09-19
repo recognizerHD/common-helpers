@@ -12,6 +12,9 @@ A collection of things that go in the helpers file for various projects.
 
 ## Release Notes
 
+###### v1.1.1
+* Fixed - bcdiv function argument not well formed bug.
+
 ###### v1.1.0
 * New - Added PHP extension bcmath as required
 * Updated - composer library updates
