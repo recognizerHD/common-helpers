@@ -12,6 +12,9 @@ A collection of things that go in the helpers file for various projects.
 
 ## Release Notes
 
+###### v1.1.2
+* Fixed - thousands separator threw errors too.
+
 ###### v1.1.1
 * Fixed - bcdiv function argument not well formed bug.
 
