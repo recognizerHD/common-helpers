@@ -12,6 +12,9 @@ A collection of things that go in the helpers file for various projects.
 
 ## Release Notes
 
+###### v1.2.0
+* Reverted - asMoney no longer using bcdiv. Reverted back to number_format. 
+
 ###### v1.1.2
 * Fixed - thousands separator threw errors too.
 
