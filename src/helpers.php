@@ -5,7 +5,7 @@ if ( ! function_exists('asMoney')) {
     {
         $value = (double) $value;
 
-        return (double) bcdiv(number_format($value, 5, '.', ''), 1, 2);
+        return (double)number_format($value, 2, '.', '');
     }
 }
 
@@ -27,7 +27,7 @@ if ( ! function_exists('showMoney')) {
 
             return ($negative ? '-' : '').
                    ($showSymbols ? config('settings.global.pre_currency_symbol') : '').
-                   number_format(asMoney($value), 2, '.', $showSymbols ? ',' : '').
+                   number_format($value, 2, '.', $showSymbols ? ',' : '').
                    ($showSymbols ? config('settings.global.post_currency_symbol') : '');
         } else {
             // As of this moment, this is not available on windows. The languages are also not available when I used a custom function from http://www.php.net/manual/en/function.money-format.php
