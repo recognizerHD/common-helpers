@@ -12,6 +12,11 @@ A collection of things that go in the helpers file for various projects.
 
 ## Release Notes
 
+###### v1.3.0
+* Fixed - PHP 8.5 deprecation notices for the non-canonical `(double)` cast (now `(float)`).
+* Updated - Removed the dead `money_format()` branch from showMoney (the function was removed in PHP 8.0). The `$format` argument is still accepted but ignored.
+* Updated - Laravel 11, 12 and 13 added to the supported framework versions.
+
 ###### v1.2.0
 * Reverted - asMoney no longer using bcdiv. Reverted back to number_format. 
 

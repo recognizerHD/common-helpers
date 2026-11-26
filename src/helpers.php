@@ -3,38 +3,29 @@
 if ( ! function_exists('asMoney')) {
     function asMoney($value)
     {
-        $value = (double) $value;
+        $value = (float) $value;
 
-        return (double)number_format($value, 2, '.', '');
+        return (float) number_format($value, 2, '.', '');
     }
 }
 
 if ( ! function_exists('showMoney')) {
     function showMoney($value, $format = null, $showSymbols = true)
     {
-        $value = (double) $value;
-        if ($format === null) {
-            $format = config('settings.global.money_format', '%i');
+        // $format is kept for backwards compatibility only. It was used by money_format(),
+        // which was removed in PHP 8.0, so it no longer has any effect.
+        $value = (float) $value;
+
+        $negative = false;
+        if ($value < 0) {
+            $negative = true;
+            $value = abs($value);
         }
 
-        // return \money_format( $format, $this->value)
-        if ( ! function_exists('money_format')) {
-            $negative = false;
-            if ($value < 0) {
-                $negative = true;
-                $value = abs($value);
-            }
-
-            return ($negative ? '-' : '').
-                   ($showSymbols ? config('settings.global.pre_currency_symbol') : '').
-                   number_format($value, 2, '.', $showSymbols ? ',' : '').
-                   ($showSymbols ? config('settings.global.post_currency_symbol') : '');
-        } else {
-            // As of this moment, this is not available on windows. The languages are also not available when I used a custom function from http://www.php.net/manual/en/function.money-format.php
-            setlocale(LC_MONETARY, config('settings.global.money_locale', 'en_CA.utf8'));
-
-            return money_format($format, $value);
-        }
+        return ($negative ? '-' : '').
+               ($showSymbols ? config('settings.global.pre_currency_symbol') : '').
+               number_format($value, 2, '.', $showSymbols ? ',' : '').
+               ($showSymbols ? config('settings.global.post_currency_symbol') : '');
     }
 }
 
